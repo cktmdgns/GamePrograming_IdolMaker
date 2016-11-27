@@ -72,7 +72,9 @@
     <Compile Include="Assets\Resource\Script\GameManagerScript.cs" />
     <Compile Include="Assets\Resource\Script\IdolManagerScript.cs" />
     <Compile Include="Assets\Resource\Script\IdolScript.cs" />
+    <Compile Include="Assets\Resource\Script\MainCharacterChangeScript.cs" />
     <Compile Include="Assets\Resource\Script\PlayerScript.cs" />
+    <Compile Include="Assets\Resource\Script\ScrollCharacterSellectScript.cs" />
     <Compile Include="Assets\Resource\Script\UIControlScript.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />

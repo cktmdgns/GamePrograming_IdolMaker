@@ -8,4 +8,9 @@ public class IdolScript {
     public int money = 10;
     public int step = 0;
     public List<Sprite> idolImage = null;
+    public enum state
+    {
+        NoHave, Have
+    }
+    public state myState = state.NoHave;
 }
