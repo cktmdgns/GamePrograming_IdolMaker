@@ -81,18 +81,17 @@ public class GameManagerScript : MonoBehaviour {
 
     public void Training()
     {
-        if(IdolManagerScript.instance.idolList[GameManagerScript.instance.currentScrollSellectIndex].myState == IdolScript.state.Have)
-        {
-            if (PlayerScript.instance.money >= System.Convert.ToInt32(
-                    (IdolManagerScript.instance.idolList[GameManagerScript.instance.currentScrollSellectIndex].money
-                    + 10) * (0.1 + IdolManagerScript.instance.idolList[GameManagerScript.instance.currentScrollSellectIndex].step)))
-            {
-                PlayerScript.instance.money -= System.Convert.ToInt32(
-                    (IdolManagerScript.instance.idolList[GameManagerScript.instance.currentScrollSellectIndex].money
-                    + 10) * (0.1 + IdolManagerScript.instance.idolList[GameManagerScript.instance.currentScrollSellectIndex].step));
+        int money = IdolManagerScript.instance.idolList[GameManagerScript.instance.currentScrollSellectIndex].money;
+        int step = IdolManagerScript.instance.idolList[GameManagerScript.instance.currentScrollSellectIndex].step;
+        int requireMoney = System.Convert.ToInt32((money + 10) * (0.1 + step * 0.05));
 
+        if (IdolManagerScript.instance.idolList[GameManagerScript.instance.currentScrollSellectIndex].myState == IdolScript.state.Have)
+        {
+            if (PlayerScript.instance.money >= requireMoney)
+            {
+                PlayerScript.instance.money -= requireMoney;
                 int randNum = Random.Range(0, 100);
-                if (randNum >= 100 - (2 - Mathf.Log10(10 + (IdolManagerScript.instance.idolList[GameManagerScript.instance.currentScrollSellectIndex].step * 5))) * 100)
+                if (randNum >= 100 - (2 - Mathf.Log10(10 + (step * 3))) * 100)
                 {
                     UIControlScript.instance.PopUpMessage.GetComponentInChildren<Text>().text = "트레이닝 성공!";
                     UIControlScript.instance.PopUpMessage.SetActive(true);
@@ -119,12 +118,12 @@ public class GameManagerScript : MonoBehaviour {
 
     public void Release()
     {
+        int money = IdolManagerScript.instance.idolList[GameManagerScript.instance.currentScrollSellectIndex].money;
+        int step = IdolManagerScript.instance.idolList[GameManagerScript.instance.currentScrollSellectIndex].step;
+        int addMoney = System.Convert.ToInt32((money + 10) * (1 + (step * step * step * 0.008)));
+
         if (IdolManagerScript.instance.idolList[GameManagerScript.instance.currentScrollSellectIndex].myState == IdolScript.state.Have)
         {
-            int addMoney = System.Convert.ToInt32((IdolManagerScript.instance.idolList[GameManagerScript.instance.currentScrollSellectIndex].money + 10) *
-                (1 + IdolManagerScript.instance.idolList[GameManagerScript.instance.currentScrollSellectIndex].step
-                + IdolManagerScript.instance.idolList[GameManagerScript.instance.currentScrollSellectIndex].step * IdolManagerScript.instance.idolList[GameManagerScript.instance.currentScrollSellectIndex].step));
-
             PlayerScript.instance.money += addMoney;
             PlayerScript.instance.score += addMoney;
 
