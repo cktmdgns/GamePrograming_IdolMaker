@@ -50,6 +50,7 @@ public class GameManagerScript : MonoBehaviour {
     public void ManagementClose()
     {
         uiControlScript.Panel_Management.SetActive(false);
+        uiControlScript.PopUpMessage.SetActive(false);
     }
 
     public void PopUpClose()
@@ -69,6 +70,11 @@ public class GameManagerScript : MonoBehaviour {
                 IdolManagerScript.instance.idolList[currentScrollSellectIndex].myState = IdolScript.state.Have;
 
                 UIControlScript.instance.PopUpMessage.GetComponentInChildren<Text>().text = "스카우트 성공!";
+                UIControlScript.instance.PopUpMessage.SetActive(true);
+            }
+            else
+            {
+                UIControlScript.instance.PopUpMessage.GetComponentInChildren<Text>().text = "소지금 부족!";
                 UIControlScript.instance.PopUpMessage.SetActive(true);
             }
         }
@@ -120,7 +126,7 @@ public class GameManagerScript : MonoBehaviour {
     {
         int money = IdolManagerScript.instance.idolList[GameManagerScript.instance.currentScrollSellectIndex].money;
         int step = IdolManagerScript.instance.idolList[GameManagerScript.instance.currentScrollSellectIndex].step;
-        int addMoney = System.Convert.ToInt32((money + 10) * (1 + (step * step * step * 0.008)));
+        int addMoney = System.Convert.ToInt32((money + 10) * (1 + (step * step * step * 0.01)));
 
         if (IdolManagerScript.instance.idolList[GameManagerScript.instance.currentScrollSellectIndex].myState == IdolScript.state.Have)
         {

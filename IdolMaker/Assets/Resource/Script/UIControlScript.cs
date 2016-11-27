@@ -33,31 +33,31 @@ public class UIControlScript : MonoBehaviour {
         Text_Score.text = System.Convert.ToString(playerScript.score);
         Text_Money.text = System.Convert.ToString(playerScript.money);
 
-        if(playerScript.score > 8000000)
+        if(playerScript.score > 500000)
         {
             playerScript.myScale = PlayerScript.scale.신의손;
         }
-        else if (playerScript.score > 1500000)
+        else if (playerScript.score > 150000)
         {
             playerScript.myScale = PlayerScript.scale.대박치는;
         }
-        else if (playerScript.score > 300000)
+        else if (playerScript.score > 50000)
         {
             playerScript.myScale = PlayerScript.scale.잘나가는;
         }
-        else if (playerScript.score > 62500)
+        else if (playerScript.score > 10000)
         {
             playerScript.myScale = PlayerScript.scale.부끄럽지않은;
         }
-        else if (playerScript.score > 12500)
+        else if (playerScript.score > 3000)
         {
             playerScript.myScale = PlayerScript.scale.그럭저럭인;
         }
-        else if (playerScript.score > 2500)
+        else if (playerScript.score > 1000)
         {
             playerScript.myScale = PlayerScript.scale.굶주리지않는;
         }
-        else if (playerScript.score > 500)
+        else if (playerScript.score > 300)
         {
             playerScript.myScale = PlayerScript.scale.허름한;
         }
@@ -70,13 +70,17 @@ public class UIControlScript : MonoBehaviour {
             playerScript.myScale = PlayerScript.scale.인지도Zero의;
         }
 
-        if (IdolManagerScript.instance.idolList[GameManagerScript.instance.currentScrollSellectIndex].step >= 6)
+        if (IdolManagerScript.instance.idolList[GameManagerScript.instance.currentScrollSellectIndex].step >= 10)
         {
             image_SellectCharacter.GetComponent<Image>().sprite = IdolManagerScript.instance.idolList[GameManagerScript.instance.currentScrollSellectIndex].idolImage[2];
         }
+        else if (IdolManagerScript.instance.idolList[GameManagerScript.instance.currentScrollSellectIndex].step >= 5)
+        {
+            image_SellectCharacter.GetComponent<Image>().sprite = IdolManagerScript.instance.idolList[GameManagerScript.instance.currentScrollSellectIndex].idolImage[1];
+        }
         else
         {
-            image_SellectCharacter.GetComponent<Image>().sprite = IdolManagerScript.instance.idolList[GameManagerScript.instance.currentScrollSellectIndex].idolImage[IdolManagerScript.instance.idolList[GameManagerScript.instance.currentScrollSellectIndex].step / 3];
+            image_SellectCharacter.GetComponent<Image>().sprite = IdolManagerScript.instance.idolList[GameManagerScript.instance.currentScrollSellectIndex].idolImage[0];
         }
 
         if (UIControlScript.instance.Training.activeSelf == true)
@@ -96,7 +100,7 @@ public class UIControlScript : MonoBehaviour {
 
             ScrollDetail2.GetComponentsInChildren<Text>()[1].text = IdolManagerScript.instance.idolList[GameManagerScript.instance.currentScrollSellectIndex].idolName;
             ScrollDetail2.GetComponentsInChildren<Text>()[2].text = step + "단계";
-            ScrollDetail2.GetComponentsInChildren<Text>()[3].text = System.Convert.ToInt32((money + 10) * (1 + (step * step * step * 0.008))) + "$";
+            ScrollDetail2.GetComponentsInChildren<Text>()[3].text = System.Convert.ToInt32((money + 10) * (1 + (step * step * step * 0.01))) + "$";
         }
     }
 
